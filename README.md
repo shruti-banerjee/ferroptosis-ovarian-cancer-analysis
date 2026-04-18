@@ -121,16 +121,12 @@ Samples with alignment scores below 60% (SRR25637208, SRR25637224) were excluded
 
 ### 4. Co-expressed Ferroptosis–Apoptosis Hub Genes
 
-Four ferroptosis genes were found co-expressed with apoptosis genes in both positive and negative correlation networks:
-
 | Gene | Type | Interactions | Role |
 |---|---|---|---|
 | **CDKN1A (p21)** | Ferroptosis | 23 | Cell cycle arrest at G1; tumour suppressor; mediates p53 response |
 | **GDF15** | Ferroptosis | 10 | Stress-induced cytokine; involved in cancer progression |
 | CISD2 | Ferroptosis | — | Iron-sulphur cluster protein; mitochondrial function |
 | NUPR1 | Ferroptosis | — | Stress-response gene; linked to ferroptosis resistance |
-
-**CDKN1A and GDF15 were selected as key hub genes** due to their high interaction degrees.
 
 ### 5. KEGG Pathway Enrichment
 
@@ -144,83 +140,58 @@ Four ferroptosis genes were found co-expressed with apoptosis genes in both posi
 | **p53 signalling pathway** | **CDKN1A, CYCS** |
 | Human T-cell leukemia virus 1 | FOSL1, CDKN1A, JUN |
 
-The platinum drug resistance pathway is particularly significant — CDKN1A's involvement suggests a mechanistic link between ferroptosis and cisplatin resistance in ovarian cancer, which is a major clinical challenge.
-
 ---
 
 ## Data Visualisations
 
 Reproducible charts generated from thesis data using Python and R.  
-See [`visualizations.py`](./visualizations.py) and [`visualizations.R`](./visualizations.R).
+See [`thesis_visualizations.py`](./thesis_visualizations.py) and [`thesis_visualizations.R`](./thesis_visualizations.R).
 
 ### Sample count through the QC pipeline
-![QC Pipeline](charts/chart1_qc_pipeline.png)
+![QC Pipeline](chart1_qc_pipeline.png)
 
 ### HISAT2 alignment scores — diseased vs control
-![Alignment Scores](charts/chart2_alignment_scores.png)
+![Alignment Scores](chart2_alignment_scores.png)
 
 ### Hub gene interaction degrees — co-expressed network
-![Hub Gene Degrees](charts/chart3_hub_gene_degrees.png)
+![Hub Gene Degrees](chart3_hub_gene_degrees.png)
 
 ### KEGG pathway gene involvement
-![KEGG Pathways](charts/chart4_kegg_pathways.png)
+![KEGG Pathways](chart4_kegg_pathways.png)
 
 ### DEG filtering funnel
-![DEG Funnel](charts/chart5_deg_funnel.png)
-
----
-
-## Repository Structure
-
-```
-ferroptosis-ovarian-cancer-analysis/
-├── README.md                  ← this file
-├── visualizations.py          ← Python charts (Matplotlib + NumPy)
-├── visualizations.R           ← R charts (ggplot2)
-├── charts/                    ← generated PNG outputs
-│   ├── chart1_qc_pipeline.png
-│   ├── chart2_alignment_scores.png
-│   ├── chart3_hub_gene_degrees.png
-│   ├── chart4_kegg_pathways.png
-│   └── chart5_deg_funnel.png
-└── thesis/
-    └── thesis_shruti_banerjee.pdf   ← full dissertation
-```
+![DEG Funnel](chart5_deg_funnel.png)
 
 ---
 
 ## How to Reproduce the Visualisations
 
-**Python (requires matplotlib, numpy, pandas):**
+**Python (requires matplotlib, numpy):**
 ```bash
-pip install matplotlib numpy pandas
-python visualizations.py
+pip install matplotlib numpy
+python thesis_visualizations.py
 ```
 
 **R (requires ggplot2):**
 ```r
 install.packages("ggplot2")
-Rscript visualizations.R
+Rscript thesis_visualizations.R
 ```
-
-Charts will be saved to the `charts/` folder.
 
 ---
 
 ## Key Biological Insights
 
-**Why does this matter clinically?**
-
-- Ovarian cancer frequently develops **resistance to cisplatin**, the standard chemotherapy. CDKN1A's involvement in the platinum drug resistance pathway suggests ferroptosis induction could be a strategy to **resensitise resistant tumours**.
-- **GPX4**, ranked 7th in hub gene interaction, is the primary guardian against ferroptotic cell death. Its differential expression in ovarian cancer cells makes it a promising drug target.
+- Ovarian cancer frequently develops **resistance to cisplatin**. CDKN1A's involvement in the platinum drug resistance pathway suggests ferroptosis induction could resensitise resistant tumours.
+- **GPX4**, ranked 7th in hub gene interaction, is the primary guardian against ferroptotic cell death and a promising drug target.
 - The **p53–CDKN1A axis** is central to both ferroptosis delay and apoptosis induction, revealing a shared regulatory point between the two pathways.
-- Ferroptosis inducers (erastin, RSL3) combined with TRAIL-based apoptosis induction show **synergistic anti-tumour effects** — a potential combination therapy avenue.
+- Ferroptosis inducers combined with TRAIL-based apoptosis induction show **synergistic anti-tumour effects** — a potential combination therapy avenue.
 
 ---
 
 ## Conclusion
 
-This study identified **CDKN1A and GDF15** as key ferroptosis hub genes with co-regulatory roles in apoptosis in ovarian cancer. Their involvement in pathways including platinum drug resistance and p53 signalling opens avenues for novel combination therapies that target both cell death mechanisms simultaneously.
+This study identified **CDKN1A and GDF15** as key ferroptosis hub genes with co-regulatory roles in apoptosis in ovarian cancer. Their involvement in pathways including platinum drug resistance and p53 signalling opens avenues for novel combination therapies targeting both cell death mechanisms simultaneously.
 
 ---
 
