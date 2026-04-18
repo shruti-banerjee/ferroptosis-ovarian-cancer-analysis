@@ -1,4 +1,4 @@
-# Ferroptosis Hub Genes & Apoptosis in Ovarian Cancer
+# Relationship between Ferroptosis Hub Genes & Apoptosis in Ovarian Cancer
 ### MSc Bioinformatics Dissertation | Pondicherry University | May 2024
 
 **Author:** Shruti Banerjee (Reg. No. 22378042)  
