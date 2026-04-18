@@ -149,19 +149,19 @@ All charts are fully reproducible. Source code provided in both Python and R.
 *Generated using Matplotlib + NumPy — see [`thesis_visualizations_fixed.py`](./thesis_visualizations_fixed.py)*
 
 #### Sample count through QC pipeline
-![QC Pipeline](chart1_qc_pipeline.png)
+![QC Pipeline](figure/chart1_qc_pipeline.png)
 
 #### HISAT2 alignment scores — diseased vs control
-![Alignment Scores](chart2_alignment_scores.png)
+![Alignment Scores](figure/chart2_alignment_scores.png)
 
 #### Hub gene interaction degrees
-![Hub Gene Degrees](chart3_hub_gene_degrees.png)
+![Hub Gene Degrees](figure/chart3_hub_gene_degrees.png)
 
 #### KEGG pathway gene involvement
-![KEGG Pathways](chart4_kegg_pathways.png)
+![KEGG Pathways](figure/chart4_kegg_pathways.png)
 
 #### DEG filtering funnel
-![DEG Funnel](chart5_deg_funnel.png)
+![DEG Funnel](figure/chart5_deg_funnel.png)
 
 ---
 
@@ -171,17 +171,17 @@ All charts are fully reproducible. Source code provided in both Python and R.
 #### Ferroptosis hub gene rankings — lollipop chart
 > Publication-quality lollipop chart colour-coded by functional category. Each gene's biological role is encoded visually — a standard format in bioinformatics journals.
 
-![Lollipop Hub Ranks](R_chart1_lollipop_hub_ranks.png)
+![Lollipop Hub Ranks](figure/R_chart1_lollipop_hub_ranks.png)
 
 #### Co-expression network composition — ferroptosis vs apoptosis
 > Shows that ferroptosis genes are a small but critically co-expressed minority within both positive and negative co-expression networks.
 
-![Co-expression Balance](R_chart2_coexpression_balance.png)
+![Co-expression Balance](figure/R_chart2_coexpression_balance.png)
 
 #### Ferroptosis–apoptosis gene crosstalk — alluvial diagram
 > A Sankey-style alluvial diagram directly visualising the key thesis finding: CDKN1A and GDF15 bridge ferroptosis and apoptosis pathways. This chart type appears in Nature, Cell, and Bioinformatics journals.
 
-![Gene Crosstalk](R_chart3_gene_crosstalk.png)
+![Gene Crosstalk](figure/R_chart3_gene_crosstalk.png)
 
 ---
 
