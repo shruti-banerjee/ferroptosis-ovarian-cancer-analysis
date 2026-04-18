@@ -25,14 +25,15 @@ ferroptosis-ovarian-cancer-analysis/
 ├── thesis_shruti_banerjee.pdf
 ├── thesis_visualizations_fixed.py
 ├── thesis_visualizations.R
-├── chart1_qc_pipeline.png
-├── chart2_alignment_scores.png
-├── chart3_hub_gene_degrees.png
-├── chart4_kegg_pathways.png
-├── chart5_deg_funnel.png
-├── R_chart1_lollipop_hub_ranks.png
-├── R_chart2_coexpression_balance.png
-├── R_chart3_gene_crosstalk.png
+├── figure/
+│   ├── chart1_qc_pipeline.png
+│   ├── chart2_alignment_scores.png
+│   ├── chart3_hub_gene_degrees.png
+│   ├── chart4_kegg_pathways.png
+│   ├── chart5_deg_funnel.png
+│   ├── R_chart1_lollipop_hub_ranks.png
+│   ├── R_chart2_coexpression_balance.png
+│   └── R_chart3_gene_crosstalk.png
 ├── notebooks/
 │   └── ferroptosis_analysis.ipynb
 └── data/
@@ -175,19 +176,19 @@ All charts are fully reproducible. Source code in both Python and R.
 *Generated using Matplotlib + NumPy — see [`thesis_visualizations_fixed.py`](./thesis_visualizations_fixed.py)*
 
 #### Sample count through QC pipeline
-![QC Pipeline](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/chart1_qc_pipeline.png)
+![QC Pipeline](figure/chart1_qc_pipeline.png)
 
 #### HISAT2 alignment scores — diseased vs control
-![Alignment Scores](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/chart2_alignment_scores.png)
+![Alignment Scores](figure/chart2_alignment_scores.png)
 
 #### Hub gene interaction degrees
-![Hub Gene Degrees](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/chart3_hub_gene_degrees.png)
+![Hub Gene Degrees](figure/chart3_hub_gene_degrees.png)
 
 #### KEGG pathway gene involvement
-![KEGG Pathways](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/chart4_kegg_pathways.png)
+![KEGG Pathways](figure/chart4_kegg_pathways.png)
 
 #### DEG filtering funnel
-![DEG Funnel](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/chart5_deg_funnel.png)
+![DEG Funnel](figure/chart5_deg_funnel.png)
 
 ---
 
@@ -197,17 +198,17 @@ All charts are fully reproducible. Source code in both Python and R.
 #### Ferroptosis hub gene rankings — lollipop chart
 > Publication-quality lollipop chart colour-coded by functional category.
 
-![Lollipop Hub Ranks](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/R_chart1_lollipop_hub_ranks.png)
+![Lollipop Hub Ranks](figure/R_chart1_lollipop_hub_ranks.png)
 
 #### Co-expression network composition — ferroptosis vs apoptosis
 > Shows that ferroptosis genes are a small but critically co-expressed minority.
 
-![Co-expression Balance](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/R_chart2_coexpression_balance.png)
+![Co-expression Balance](figure/R_chart2_coexpression_balance.png)
 
 #### Ferroptosis–apoptosis gene crosstalk — alluvial diagram
-> Sankey-style diagram showing CDKN1A and GDF15 bridging ferroptosis and apoptosis pathways. This chart type appears in Nature, Cell, and Bioinformatics journals.
+> Sankey-style diagram showing CDKN1A and GDF15 bridging ferroptosis and apoptosis pathways.
 
-![Gene Crosstalk](https://github.com/shruti-banerjee/ferroptosis-ovarian-cancer-analysis/raw/main/R_chart3_gene_crosstalk.png)
+![Gene Crosstalk](figure/R_chart3_gene_crosstalk.png)
 
 ---
 
@@ -223,12 +224,6 @@ python thesis_visualizations_fixed.py
 ```r
 install.packages(c("ggplot2", "ggalluvial", "dplyr"))
 Rscript thesis_visualizations.R
-```
-
-**Interactive notebook:**
-```bash
-pip install jupyter
-jupyter notebook notebooks/ferroptosis_analysis.ipynb
 ```
 
 **In Google Colab (R):**
