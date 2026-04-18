@@ -11,7 +11,7 @@
 
 Ovarian cancer has one of the highest mortality rates among gynaecological malignancies, largely due to late-stage diagnosis and resistance to standard chemotherapy. This study investigates the molecular crosstalk between two distinct cell death pathways — **ferroptosis** and **apoptosis** — to identify potential therapeutic targets in ovarian cancer.
 
-**Key finding:** From 7,862 differentially expressed genes, two critical ferroptosis hub genes — **CDKN1A** and **GDF15** — were identified as co-expressed with apoptosis genes and associated with multiple carcinogenic pathways.
+**Key finding:** From 7,862 differentially expressed genes, two critical ferroptosis hub genes — **CDKN1A** and **GDF15** — were identified as co-expressed with apoptosis genes and associated with multiple carcinogenic pathways including platinum drug resistance.
 
 ---
 
@@ -47,11 +47,8 @@ Hub Gene Identification → CDKN1A & GDF15
 | Organism | *Homo sapiens* | *Homo sapiens* |
 | Assay type | RNA-Seq | RNA-Seq |
 | Platform | Illumina HiSeq 300 | Illumina HiSeq 300 |
-| Library layout | Paired | Paired |
 | Samples after QC | 5 | 6 |
 | Alignment score | 95–98% | 96–97% |
-
-Samples with alignment scores below 60% (SRR25637208, SRR25637224) were excluded from downstream analysis.
 
 ---
 
@@ -69,6 +66,8 @@ Samples with alignment scores below 60% (SRR25637208, SRR25637224) were excluded
 ![R](https://img.shields.io/badge/R-276DC3?style=flat&logo=r&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![DESeq2](https://img.shields.io/badge/DESeq2-Bioconductor-brightgreen?style=flat)
+![ggplot2](https://img.shields.io/badge/ggplot2-R-276DC3?style=flat)
+![ggalluvial](https://img.shields.io/badge/ggalluvial-R-276DC3?style=flat)
 
 **Network Analysis**
 
@@ -104,33 +103,33 @@ Samples with alignment scores below 60% (SRR25637208, SRR25637224) were excluded
 | Ferroptosis genes | 174 | 1,469 |
 | Co-expressed hub genes | 12 | 25 |
 
-### 3. Ferroptosis Hub Gene Rankings (PPI Network)
+### 3. Ferroptosis Hub Gene Rankings
 
-| Rank | Gene | Pathway Role |
+| Rank | Gene | Functional Category |
 |---|---|---|
-| 1 | TP53 | Tumour suppressor, apoptosis regulator |
-| 2 | HIF1A | Hypoxia response, ferroptosis modulator |
-| 3 | EGFR | Cell proliferation signalling |
-| 4 | IL6 | Inflammatory signalling |
-| 4 | STAT3 | Oncogenic transcription factor |
-| 6 | PARP1 | DNA repair, apoptosis |
-| 7 | GPX4 | Key ferroptosis regulator |
-| 8 | SIRT1 | Metabolic regulation |
-| 8 | MTOR | Cell growth and survival |
-| 8 | NFE2L2 | Oxidative stress response |
+| 1 | TP53 | Tumour suppressor |
+| 2 | HIF1A | Hypoxia response |
+| 3 | EGFR | Growth signalling |
+| 4 | IL6 | Inflammation |
+| 4 | STAT3 | Inflammation |
+| 6 | PARP1 | DNA repair |
+| 7 | GPX4 | Ferroptosis regulator |
+| 8 | SIRT1 | Metabolism |
+| 8 | MTOR | Metabolism |
+| 8 | NFE2L2 | Oxidative stress |
 
 ### 4. Co-expressed Ferroptosis–Apoptosis Hub Genes
 
 | Gene | Type | Interactions | Role |
 |---|---|---|---|
-| **CDKN1A (p21)** | Ferroptosis | 23 | Cell cycle arrest at G1; tumour suppressor; mediates p53 response |
-| **GDF15** | Ferroptosis | 10 | Stress-induced cytokine; involved in cancer progression |
-| CISD2 | Ferroptosis | — | Iron-sulphur cluster protein; mitochondrial function |
-| NUPR1 | Ferroptosis | — | Stress-response gene; linked to ferroptosis resistance |
+| **CDKN1A (p21)** | Ferroptosis | 23 | Cell cycle arrest; tumour suppressor; p53 mediator |
+| **GDF15** | Ferroptosis | 10 | Stress-induced cytokine; cancer progression |
+| CISD2 | Ferroptosis | — | Iron-sulphur cluster; mitochondrial function |
+| NUPR1 | Ferroptosis | — | Stress response; ferroptosis resistance |
 
 ### 5. KEGG Pathway Enrichment
 
-| Pathway | Key Genes Involved |
+| Pathway | Key Genes |
 |---|---|
 | Pathways in cancer | CDKN1A, JUN, CYCS, CKS1B |
 | Colorectal cancer | CDKN1A, JUN, CYCS |
@@ -138,71 +137,96 @@ Samples with alignment scores below 60% (SRR25637208, SRR25637224) were excluded
 | Renal cell carcinoma | CDKN1A, JUN |
 | **Platinum drug resistance** | **CDKN1A, CYCS** |
 | **p53 signalling pathway** | **CDKN1A, CYCS** |
-| Human T-cell leukemia virus 1 | FOSL1, CDKN1A, JUN |
+| HTLV-1 infection | FOSL1, CDKN1A, JUN |
 
 ---
 
 ## Data Visualisations
 
-Reproducible charts generated from thesis data using Python and R.  
-See [`thesis_visualizations.py`](./thesis_visualizations.py) and [`thesis_visualizations.R`](./thesis_visualizations.R).
+All charts are fully reproducible. Source code provided in both Python and R.
 
-### Sample count through the QC pipeline
+### Python Visualisations
+*Generated using Matplotlib + NumPy — see [`thesis_visualizations_fixed.py`](./thesis_visualizations_fixed.py)*
+
+#### Sample count through QC pipeline
 ![QC Pipeline](chart1_qc_pipeline.png)
 
-### HISAT2 alignment scores — diseased vs control
+#### HISAT2 alignment scores — diseased vs control
 ![Alignment Scores](chart2_alignment_scores.png)
 
-### Hub gene interaction degrees — co-expressed network
+#### Hub gene interaction degrees
 ![Hub Gene Degrees](chart3_hub_gene_degrees.png)
 
-### KEGG pathway gene involvement
+#### KEGG pathway gene involvement
 ![KEGG Pathways](chart4_kegg_pathways.png)
 
-### DEG filtering funnel
+#### DEG filtering funnel
 ![DEG Funnel](chart5_deg_funnel.png)
 
 ---
 
-## How to Reproduce the Visualisations
+### R Visualisations
+*Generated using ggplot2 + ggalluvial — see [`thesis_visualizations.R`](./thesis_visualizations.R)*
 
-**Python (requires matplotlib, numpy):**
+#### Ferroptosis hub gene rankings — lollipop chart
+> Publication-quality lollipop chart colour-coded by functional category. Each gene's biological role is encoded visually — a standard format in bioinformatics journals.
+
+![Lollipop Hub Ranks](R_chart1_lollipop_hub_ranks.png)
+
+#### Co-expression network composition — ferroptosis vs apoptosis
+> Shows that ferroptosis genes are a small but critically co-expressed minority within both positive and negative co-expression networks.
+
+![Co-expression Balance](R_chart2_coexpression_balance.png)
+
+#### Ferroptosis–apoptosis gene crosstalk — alluvial diagram
+> A Sankey-style alluvial diagram directly visualising the key thesis finding: CDKN1A and GDF15 bridge ferroptosis and apoptosis pathways. This chart type appears in Nature, Cell, and Bioinformatics journals.
+
+![Gene Crosstalk](R_chart3_gene_crosstalk.png)
+
+---
+
+## How to Reproduce
+
+**Python:**
 ```bash
 pip install matplotlib numpy
-python thesis_visualizations.py
+python thesis_visualizations_fixed.py
 ```
 
-**R (requires ggplot2):**
+**R:**
 ```r
-install.packages("ggplot2")
+install.packages(c("ggplot2", "ggalluvial", "dplyr"))
 Rscript thesis_visualizations.R
+```
+
+**In Google Colab (R):**
+```python
+!apt-get install -y r-base libcurl4-openssl-dev libssl-dev libxml2-dev
+!R -e "install.packages(c('ggplot2','ggalluvial','dplyr'), repos='http://cran.r-project.org')"
+!Rscript thesis_visualizations.R
 ```
 
 ---
 
 ## Key Biological Insights
 
-- Ovarian cancer frequently develops **resistance to cisplatin**. CDKN1A's involvement in the platinum drug resistance pathway suggests ferroptosis induction could resensitise resistant tumours.
-- **GPX4**, ranked 7th in hub gene interaction, is the primary guardian against ferroptotic cell death and a promising drug target.
-- The **p53–CDKN1A axis** is central to both ferroptosis delay and apoptosis induction, revealing a shared regulatory point between the two pathways.
-- Ferroptosis inducers combined with TRAIL-based apoptosis induction show **synergistic anti-tumour effects** — a potential combination therapy avenue.
+- **Platinum drug resistance:** CDKN1A's involvement suggests ferroptosis induction could resensitise cisplatin-resistant ovarian tumours — a major clinical challenge.
+- **GPX4** (rank 7) is the primary ferroptosis gatekeeper and a promising therapeutic target in ovarian cancer.
+- The **p53–CDKN1A axis** is a shared regulatory node between ferroptosis and apoptosis — making it a dual-pathway therapeutic target.
+- The alluvial diagram (R Chart 3) reveals that CDKN1A has broader apoptosis connectivity than GDF15, suggesting it plays a more central bridging role between the two pathways.
 
 ---
 
 ## Conclusion
 
-This study identified **CDKN1A and GDF15** as key ferroptosis hub genes with co-regulatory roles in apoptosis in ovarian cancer. Their involvement in pathways including platinum drug resistance and p53 signalling opens avenues for novel combination therapies targeting both cell death mechanisms simultaneously.
+This study identified **CDKN1A and GDF15** as key ferroptosis hub genes with co-regulatory roles in apoptosis in ovarian cancer. Their involvement in platinum drug resistance and p53 signalling opens avenues for combination therapies targeting both cell death mechanisms simultaneously.
 
 ---
 
 ## Citation
 
-Banerjee, S. (2024). *Identification of ferroptosis-related hub genes and their potential relation with apoptosis in Ovarian Cancer.* MSc Dissertation, Department of Bioinformatics, Pondicherry University, Puducherry.
+Banerjee, S. (2024). *Identification of ferroptosis-related hub genes and their potential relation with apoptosis in Ovarian Cancer.* MSc Dissertation, Department of Bioinformatics, Pondicherry University.
 
 ---
 
-## Contact
-
-**Shruti Banerjee**  
-📧 banerjee.shruti1306@gmail.com  
-🔗 [GitHub Profile](https://github.com/shruti-banerjee)
+**Shruti Banerjee** · banerjee.shruti1306@gmail.com · [GitHub](https://github.com/shruti-banerjee)
